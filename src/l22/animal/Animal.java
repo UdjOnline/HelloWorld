@@ -14,7 +14,7 @@ public class Animal {
     }
 
     public void printInfo() {
-        System.out.println("Это животное");
+        System.out.println("Это животное:");
     }
 
     public String toString() {
