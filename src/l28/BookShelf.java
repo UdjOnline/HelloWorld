@@ -1,6 +1,8 @@
 package l28;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 public class BookShelf {
@@ -50,16 +52,35 @@ public class BookShelf {
         books.remove(new Book(title, author, year));
     }
 
+    void removeBook(int index) { // убираем книгу по индексу
+        books.remove(index);
+    }
+
     void showBookShelf() {
         System.out.println("______________________________________");
-        System.out.print("These are " + this.books.size() + "books on the bookShelf: ");
+        System.out.println("These are " + this.books.size() + "books on the bookShelf: ");
+        System.out.println("______________________________________");
         for (Book b : books) {
             System.out.println(b) ;
         }
         System.out.println("______________________________________");
     }
 
-    class Iterator extends BookShelf {
+    class BookIterator implements Iterator<Book> {
+        int current = 0;
+        @Override
+        public boolean hasNext() {
+            return current < books.size();
+        }
+
+        @Override
+        public Book next() {
+            Book book = books.get(current);
+            current++;
+            return book;
+        }
+
+    /*class Iterator extends BookShelf {
         int index;
         Iterator() {
             this.index = 0;
@@ -75,7 +96,7 @@ public class BookShelf {
                 System.out.println("Iterator circles back to the beginning");
             }
             return false;
-        }
+        }*/
     }
 }
 
@@ -92,21 +113,18 @@ class Main {
         bs.addBook("Java EE design patterns for professionals", "M.Jener & A.Feedom", 2020);
         bs.showBookShelf();
 
-        System.out.println("Remove book from index 2: ");
-        bs.removeBook("Java for Dummies", "B.Berd", 2019); // убираем одну книгу
+        System.out.println("Remove book by Title: ");
+        bs.removeBook("Java for Dummies", "B.Berd", 2019); // убираем одну книгу по названию
+        System.out.println("Remove book from index 3: ");
+        bs.removeBook(3); // убираем одну книгу по индексу
         bs.showBookShelf();
 
         // создаём итератор:
-        BookShelf.Iterator myIterator = bs.new Iterator();
-        System.out.println("Create Iterator:");
+        BookShelf.BookIterator myIterator = bs.new BookIterator();
 
-        myIterator.checkBookShelf();
-        myIterator.checkBookShelf();
-        myIterator.checkBookShelf();
-        myIterator.checkBookShelf();
-        myIterator.checkBookShelf();
-
-        //for (int i = 0; i < bs.getSize(); i = i + 1) {
-        //    System.out.println(myIterator.checkBookShelf());
+        // запускаем цикл с методами hasNext и next:
+        while (myIterator.hasNext()) {
+            System.out.println("Book on the shelf, count by Iterator: " + myIterator.next());
+        }
     }
 }
