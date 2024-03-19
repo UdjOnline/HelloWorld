@@ -45,8 +45,7 @@ class ArrayListExample {
         System.out.println("List cleared. Size of the list: " + fruits.size()); // выводит 0.
     }
 }
-/**
-Class Main {
+class Main {
     ArrayList<String> fruits;
 
     Main() {
@@ -56,4 +55,4 @@ Class Main {
     void add(String str) {
         fruits.add(str);
     }
-}**/
+}

@@ -83,11 +83,16 @@ public class Main {
         Collections.sort(bobrList, (b1, b2) -> b1.name.compareTo(b2.name));
         System.out.println("Отсортированно по имени через Лямбда Выражения : \n" + bobrList);
 
-        Map<String, Integer> map = new HashMap<>(); // сохдали HashMap
+        Map<String, Integer> map = new HashMap<>(); // создали HashMap
         // поместили в него пары ключ-значение
         map.put("DeggetDufus", 40);
         map.put("Snejinka", 20);
         map.put("NorbertFoster", 80);
+        //for Bobr bobr: list) {
+        //map.put(bobr.name, bobr.relativesCount);
+        // }
+        System.out.println(map.containsKey("Sytjinka") + ", " + map.containsValue(1) + ", " + map.keySet() + ", " + map.values() + ".");
+
         System.out.println("----------------------------------------------------");
         System.out.println("MAP: " + map);
         System.out.println("----------------------------------------------------");
@@ -98,6 +103,12 @@ public class Main {
         }
 
         Set<String> bobrSet = new HashSet<>();
+        //for (Bobr bobr : list) {
+            //map.put(bobr.name, bobr.relativesCount);
+        //}
+        //bobrSet.add("Snejinka");
+        //System.out.println(bobrSet);}
+
         //добавляем бобров в мешок Set
         bobrSet.add("DeggetDufus");
         bobrSet.add("Snejinka");

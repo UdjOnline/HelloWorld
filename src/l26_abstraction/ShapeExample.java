@@ -17,7 +17,7 @@ abstract class Shape {
 
     // Общий метод для вывода информации о фигуре
     public void printInfo () {
-        System.out.println("Фигурв: " + name);
+        System.out.println("Фигура: " + name);
         System.out.println("Цвет: " + color);
         System.out.println("Площадь: " + getArea());
         System.out.println("Периметр: " + getPerimeter());
@@ -98,7 +98,7 @@ class Cube extends Shape {
 
     @Override
     public double getArea() {
-        return lengthRib * lengthRib;
+        return 6 * lengthRib * lengthRib;
     }
 
     @Override

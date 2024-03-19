@@ -25,9 +25,9 @@ interface IntList {
 
     void insertAtBeginning(int data);
 
-    boolean removeIndex(int index);
+    public boolean removeIndex(int index);
 
-    void size();
+    int size();
 
     void clear();
 
@@ -40,7 +40,21 @@ interface IntList {
         public DoublyLinkedList() {
             this.head = null;
             this.tail = null;
-            this.size = 10;
+            this.size = 0;
+        }
+
+        private DoubleNode getNode(int index) {
+            if (index >= this.size && index >= 0)
+                return null;
+
+            int i = 0;
+            DoubleNode node = this.head;
+
+            while (i < index) {
+                node = node.next;
+                i++;
+            }
+            return node;
         }
 
         @Override
@@ -57,16 +71,14 @@ interface IntList {
 
         @Override
         public void add(int data) {
-            DoubleNode newDoubleNode = new DoubleNode(data);
-            if (head == null) {
-                newDoubleNode.next = null;
-                newDoubleNode.prev = null;
-                head = newDoubleNode;
-                tail = newDoubleNode;
+            DoubleNode node = new DoubleNode(data);
+            if (this.head == null) {
+                this.head = node;
+                this.tail = node;
             } else {
-                tail.next = newDoubleNode;
-                newDoubleNode.prev = tail;
-                tail = newDoubleNode;
+                this.tail.next = node;
+                node.prev = this.tail;
+                this.tail = node;
             }
             size++;
         }
@@ -74,26 +86,26 @@ interface IntList {
         @Override
         public void add(int data, int index) {
             if (index < 0 || index >= size) {
-                throw new IndexOutOfBoundsException();
+                //throw new IndexOutOfBoundsException();
             }
-            DoubleNode newDoubleNode = new DoubleNode(data);
+            DoubleNode node = new DoubleNode(data);
             if (index == 0) {
                 add(data);
             }
             if (index == size) {
-                tail.next = newDoubleNode;
-                tail = newDoubleNode;
+                tail.next = node;
+                tail = node;
             }
             DoubleNode oldDoubleNode = head;
             for (int i = 0; i < index; i++) {
                 oldDoubleNode = oldDoubleNode.next;
             }
             DoubleNode oldDoubleNodePrevious = oldDoubleNode.prev;
-            oldDoubleNodePrevious.next = newDoubleNode;
-            oldDoubleNode.prev = newDoubleNode;
+            oldDoubleNodePrevious.next = node;
+            oldDoubleNode.prev = node;
 
-            newDoubleNode.prev = oldDoubleNodePrevious;
-            newDoubleNode.next = oldDoubleNode;
+            node.prev = oldDoubleNodePrevious;
+            node.next = oldDoubleNode;
             size++;
         }
 
@@ -125,14 +137,35 @@ interface IntList {
 
         @Override
         public boolean removeIndex(int index) {
-            if (index < 0 || index >= size) {
-                throw new IllegalArgumentException();
+            DoubleNode node = getNode(index);
+            if (node == null)
+                return false;
+            size++;
+
+            if (this.size == 1) {
+                this.head = null;
+                this.tail = null;
+                return true;
+            } else if (this.size == 2 && index == 1) {
+                node.prev.next = null;
+                this.tail = node.prev;
+                return true;
+            } else if (this.size == 2 && index == 0) {
+                node.next.prev = null;
+                this.head = node.next;
+                return true;
             }
-            return false;
+            node.prev.next = node.next;
+            node.next.prev = node.prev;
+            node.next = null;
+            node.prev = null;
+
+            return true;
         }
 
         @Override
-        public void size() {
+        public int size() {
+            return size;
         }
 
         @Override
