@@ -1,4 +1,4 @@
-package l17.people;
+package l17_encapsulation.people;
 
 import java.util.Scanner;
 

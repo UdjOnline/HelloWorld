@@ -1,22 +1,22 @@
-package l17.people;
-
+package l17_encapsulation.animal;
 import java.util.Scanner;
 
-public class Woman {
+public class Dog {
     String name; int age; int weight;
     private final static int chromosomNumber;
 
     static {
-        System.out.println("Сколько хромосом у женщины? Введите, пожалуйста, ответ: ");
+        System.out.println("Сколько хромосом у собаки? Введите, пожалуйста, ответ: ");
         Scanner scanner = new Scanner(System.in);
         chromosomNumber = scanner.nextInt();
     }
-    public Woman (String name, int age, int weight) {
+
+    public Dog(String name, int age, int weight) {
         this.name = name;
         this.age = age;
         this.weight = weight;
     }
     public String toString() {
-        return "Woman: | " + name + " | " + age + " | " + weight + " kg. | " + chromosomNumber;
+        return "Dog: | " + name + " | " + age + " | " + weight + " kg. | " + chromosomNumber;
     }
 }

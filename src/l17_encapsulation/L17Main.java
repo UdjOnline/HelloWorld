@@ -1,11 +1,8 @@
-import l17.animal.Cat;
-import l17.animal.Cow;
-import l17.animal.Dog;
-import l17.people.Man;
-import l17.people.Woman;
-import l17.transport.Bike;
-import l17.transport.Bus;
-import l17.transport.Car;
+package l17_encapsulation;
+
+import l17_encapsulation.animal.*;
+import l17_encapsulation.people.*;
+import l17_encapsulation.transport.*;
 
 public class L17Main {
     public static void main(String[] args) {

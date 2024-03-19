@@ -1,4 +1,4 @@
-package l17.transport;
+package l17_encapsulation.transport;
 
 public class Car {
     String brendCar; String typeCar; String colorCar; int priceCar;

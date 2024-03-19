@@ -1,5 +1,5 @@
-package l17;
-import l17.transport.Car;
+package l17_encapsulation;
+import l17_encapsulation.transport.Car;
 import java.util.Arrays;
 
 public class CarArrayList {
@@ -29,13 +29,15 @@ public class CarArrayList {
         this.cars = newGarage;
     }
 
-    public void removeByIndex(Car index) {
-        for (int i = index; i < cars.length; i++){
+    public void removeByIndex(int index) {
+        if (index >= count)
+            return;
+        for (int i = index; i < cars.length; i = i + 1){
             cars[i] = cars[i++];
         }
     }
 
-    public Car getByIndex(Car index){
+    public Car getByIndex(int index){
         return cars[index];
     }
 

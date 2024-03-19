@@ -1,5 +1,6 @@
-import l17.transport.Car;
-import l17.CarArrayList;
+package l17_encapsulation;
+
+import l17_encapsulation.transport.Car;
 
 public class L18Main {
     public static void main(String[] args) {
@@ -16,9 +17,8 @@ public class L18Main {
         garage.add(audi);
         garage.add(ford);
 
-        garage.removeByIndex(bmw);
-        garage.getByIndex(bmw);
-
+        //garage.removeByIndex();
+        //garage.getByIndex();
 
         System.out.println(garage);
     }

@@ -1,4 +1,4 @@
-package l17.animal;
+package l17_encapsulation.animal;
 import java.util.Scanner;
 public class Cow {
     String name; int age; int weight;
