@@ -10,6 +10,7 @@ public class FlatController implements IFlatController{
     public FlatController() {
         flatRepo= new FlatRepository();
     }
+    @Override
     public void add(Flat flat) {
         flatRepo.put("1212", flat);
     }

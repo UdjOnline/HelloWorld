@@ -18,7 +18,8 @@ public class CLIView {
         String cmd = scanner.nextLine();
 
         if (cmd.equals("add")) {
-            //flatController.add(Flat flat);
+            Flat flat = new Flat();
+            flatController.add(flat);
         }
     }
 }
